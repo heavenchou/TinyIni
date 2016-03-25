@@ -1,8 +1,14 @@
 #include "main.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    CTinyIni * myIni = new CTinyIni("D:\\Data\\c\\_CodeBlocks\\tinyini\\bin\\Debug\\test.ini");
+    // 取得目前目錄
+
+    string sFile = argv[0];
+    sFile = sFile.substr(0,sFile.find_last_of("\\/"));
+    sFile = sFile + "/test.ini";
+
+    CTinyIni * myIni = new CTinyIni(sFile);
 
     string s = myIni->ReadString("string", "123");
     bool b = myIni->ReadBool("bool", true);

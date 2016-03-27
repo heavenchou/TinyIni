@@ -5,8 +5,8 @@ int main(int argc, char* argv[])
     // 取得目前目錄
 
     string sFile = argv[0];
-    sFile = sFile.substr(0,sFile.find_last_of("\\/"));
-    sFile = sFile + "/test.ini";
+    sFile = sFile.substr(0,sFile.find_last_of("\\/")+1);
+    sFile = sFile + "test.ini";
 
     CTinyIni * myIni = new CTinyIni(sFile);
 

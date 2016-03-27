@@ -9,7 +9,7 @@ CTinyIni::CTinyIni(string sFileName)
 	FileStream.open(FileName.c_str());
 	if(!FileStream)
 	{
-        cout << "Open FileName fail!" << endl;
+        cout << "Open " << sFileName << " fail!" << endl;
         return;
 	}
 
@@ -17,6 +17,7 @@ CTinyIni::CTinyIni(string sFileName)
 	while(FileStream.getline (cBuff,256))
     {
         string sBuff = cBuff;
+        if(sBuff.back() == 0x0d) sBuff.pop_back();	// unix 下讀取 dos 格式的資料, 會有個 0x0d 在尾端
         if(sBuff[0] != '#')
         {
             // 非註解才處理
